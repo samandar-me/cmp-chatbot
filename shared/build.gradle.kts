@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    //kotlin("native.cocoapods")
     id("org.jetbrains.compose")
 }
 
@@ -30,6 +31,18 @@ kotlin {
         }
     }
 
+//    cocoapods {
+//        summary = "Shared code for the sample"
+//        homepage = "https://github.com/samandar-me"
+//        ios.deploymentTarget = "14.1"
+//        podfile = project.file("../iosApp/Podfile")
+//        framework {
+//            baseName = "shared"
+//            isStatic = true
+//        }
+//        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
+//    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -40,7 +53,10 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+               // implementation("com.google.accompanist:accompanist-insets:0.30.1")
+//                // If using insets-ui
+//                implementation ("com.google.accompanist:accompanist-insets-ui:0.30.1")
+//
 
                 val voyagerVersion = "1.0.0-rc05"
                 // Multiplatform
@@ -87,7 +103,9 @@ kotlin {
 
 android {
     namespace = "com.sdk.chatappkmp"
-    compileSdk = 33
+    compileSdk = 34
+    sourceSets["main"].res.srcDirs("src/androidMain/res")
+    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
     defaultConfig {
         minSdk = 24
     }
