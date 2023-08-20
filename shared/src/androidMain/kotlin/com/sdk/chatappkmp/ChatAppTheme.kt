@@ -21,6 +21,7 @@ actual fun ChatAppTheme(
     darkTheme: Boolean,
     content: @Composable () -> Unit
 ) {
+
     val colorScheme = when {
         dynamicTheme && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current

@@ -32,3 +32,4 @@ dependencyResolutionManagement {
 rootProject.name = "ChatAppKmp"
 include(":androidApp")
 include(":shared")
+include(":desktop")

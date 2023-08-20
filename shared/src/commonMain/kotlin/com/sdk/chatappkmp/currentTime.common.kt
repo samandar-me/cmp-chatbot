@@ -5,7 +5,7 @@ fun timeToString(timestampMs: Long): String {
     val hours = minutes / 24
 
     val m = minutes % 60
-    val h = hours % 24
+    val h = (hours % 24)
 
     val mm = if (m < 10) {
         "0$m"

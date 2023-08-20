@@ -76,10 +76,9 @@ data class ChatScreen(
                             contentAlignment = Alignment.Center
                         ) {
                             Image(
-                                painter = painterResource("img.png"),
+                                painter = painterResource("img_1.png"),
                                 contentDescription = "image"
                             )
-                            // Icon(Icons.Default.Chat, "image")
                         }
                     },
                     headlineContent = {

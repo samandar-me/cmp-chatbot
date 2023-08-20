@@ -3,6 +3,7 @@ plugins {
     id("com.android.library")
     //kotlin("native.cocoapods")
     id("org.jetbrains.compose")
+    kotlin("plugin.serialization") version "1.8.21"
 }
 
 kotlin {
@@ -19,6 +20,13 @@ kotlin {
             export("dev.icerock.moko:mvvm-core:0.16.1")
         }
     }
+
+    jvm("desktop") {
+        jvmToolchain(11)
+    }
+//    js(IR) {
+//        browser()
+//    }
 
     listOf(
         iosX64(),
@@ -53,10 +61,10 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
-               // implementation("com.google.accompanist:accompanist-insets:0.30.1")
-//                // If using insets-ui
-//                implementation ("com.google.accompanist:accompanist-insets-ui:0.30.1")
-//
+                implementation("io.ktor:ktor-client-core:2.3.1")
+                implementation("io.ktor:ktor-client-content-negotiation:2.3.1")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 
                 val voyagerVersion = "1.0.0-rc05"
                 // Multiplatform
@@ -74,6 +82,7 @@ kotlin {
                 implementation("com.squareup.sqldelight:android-driver:1.5.5")
                 implementation("androidx.appcompat:appcompat:1.6.1")
                 implementation("androidx.activity:activity-compose:1.7.2")
+                implementation("io.ktor:ktor-client-android:2.3.1")
             }
         }
         val androidUnitTest by getting
@@ -83,6 +92,7 @@ kotlin {
         val iosMain by creating {
             dependencies {
                 implementation("com.squareup.sqldelight:native-driver:1.5.5")
+                implementation("io.ktor:ktor-client-darwin:2.3.1")
             }
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
@@ -97,6 +107,10 @@ kotlin {
             iosX64Test.dependsOn(this)
             iosArm64Test.dependsOn(this)
             iosSimulatorArm64Test.dependsOn(this)
+
+            dependencies {
+
+            }
         }
     }
 }

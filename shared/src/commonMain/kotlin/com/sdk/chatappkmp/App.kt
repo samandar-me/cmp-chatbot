@@ -17,8 +17,8 @@ fun App(
         darkTheme = darkTheme
     ) {
         val viewModel = getViewModel(
-            key = "chat-view-model",
-            factory = viewModelFactory {
+            Unit,
+            viewModelFactory {
                 ChatViewModel()
             }
         )
