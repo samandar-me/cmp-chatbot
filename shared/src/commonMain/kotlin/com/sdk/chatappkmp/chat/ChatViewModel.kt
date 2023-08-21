@@ -31,6 +31,13 @@ class ChatViewModel : ViewModel() {
         }
     }
 
+    init {
+        viewModelScope.launch {
+            val init = launchBot("Hel")
+            time = init.time
+        }
+    }
+
     fun sendMessage() {
         val random = (1..4).random()
         viewModelScope.launch {
@@ -68,7 +75,7 @@ class ChatViewModel : ViewModel() {
     }
 
     private suspend fun launchBot(requestText: String): Message {
-        val response = httpClient.post("http://192.168.62.75:8080/request") {
+        val response = httpClient.post("http://84.54.74.228:8080/request") {
             contentType(ContentType.Application.Json)
             setBody(Request(requestText))
         }.body<Message>()

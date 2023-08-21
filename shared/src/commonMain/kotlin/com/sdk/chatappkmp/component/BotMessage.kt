@@ -26,7 +26,7 @@ fun BotMessage(message: Message) {
     Box(Modifier.fillMaxWidth()) {
         Column(
             modifier = Modifier
-                .widthIn(min = 100.dp, max = 300.dp)
+                .widthIn(min = 70.dp, max = 300.dp)
                 .clip(RoundedCornerShape(12.dp))
                 .background(MaterialTheme.colorScheme.secondaryContainer)
                 .align(Alignment.CenterStart)
